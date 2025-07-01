@@ -1,0 +1,14 @@
+#ifndef VIAGEM_H
+#define VIAGEM_H
+
+#include <QString>
+
+// Estrutura para armazenar os dados de uma viagem
+struct Viagem {
+    QString nome;
+    QString destino;
+    QString data;
+    QString descricao;
+};
+
+#endif // VIAGEM_H

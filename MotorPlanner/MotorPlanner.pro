@@ -10,12 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    novaviagemdialog.cpp \
     windowviagem.cpp
 
 HEADERS += \
+    novaviagemdialog.h \
+    viagem.h \
     windowviagem.h
 
 FORMS += \
+    novaviagemdialog.ui \
     windowviagem.ui
 
 # Default rules for deployment.

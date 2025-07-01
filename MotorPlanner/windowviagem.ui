@@ -6,23 +6,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>821</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MotorPlanner - Viagens</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="tableView">
+   <widget class="QSplitter" name="splitter">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>421</width>
-      <height>541</height>
+      <x>11</x>
+      <y>11</y>
+      <width>801</width>
+      <height>441</height>
      </rect>
     </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+    <widget class="QWidget" name="">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QListWidget" name="listaViagensWidget"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="criarViagemButton">
+        <property name="text">
+         <string>Criar Nova Viagem</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTextEdit" name="detalhesViagemTextEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -30,7 +52,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>821</width>
      <height>26</height>
     </rect>
    </property>
