@@ -29,7 +29,32 @@
     <widget class="QWidget" name="">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QListWidget" name="listaViagensWidget"/>
+       <widget class="QTableWidget" name="tabelaViagensWidget">
+        <property name="editTriggers">
+         <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+        </property>
+        <property name="columnCount">
+         <number>3</number>
+        </property>
+        <column>
+         <property name="text">
+          <string>Nome</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Destino</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Data</string>
+         </property>
+        </column>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="criarViagemButton">

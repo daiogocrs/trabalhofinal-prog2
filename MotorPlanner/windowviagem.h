@@ -2,11 +2,9 @@
 #define WINDOWVIAGEM_H
 
 #include <QMainWindow>
-#include <QListWidgetItem>
-#include <QList>      // Incluir para usar QList
-#include "viagem.h"   // Inclui a definição da estrutura Viagem
+#include <QList>
+#include "viagem.h"
 
-// Declaração adiantada da classe do diálogo para evitar inclusão circular
 class NovaViagemDialog;
 
 QT_BEGIN_NAMESPACE
@@ -22,15 +20,19 @@ public:
     ~windowviagem();
 
 private slots:
-    void on_listaViagensWidget_itemClicked(QListWidgetItem *item);
+    // Slot atualizado para a seleção de itens na tabela
+    void on_tabelaViagensWidget_itemSelectionChanged();
     void on_criarViagemButton_clicked();
 
 private:
+    // Função de ajuda para adicionar uma viagem à nova tabela
+    void adicionarViagemNaTabela(const Viagem& viagem);
+
+    // Funções de salvar/carregar
     void carregarViagensDeArquivo();
     void salvarViagensParaArquivo();
 
     Ui::windowviagem *ui;
-    QList<Viagem> m_viagens;          // Lista para guardar os dados das viagens
-    NovaViagemDialog *m_novaViagemDialog; // Ponteiro para a janela de diálogo
+    QList<Viagem> m_viagens;
 };
 #endif // WINDOWVIAGEM_H
