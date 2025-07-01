@@ -2,13 +2,14 @@
 #define NOVAVIAGEMDIALOG_H
 
 #include <QDialog>
-#include "viagem.h" // Inclui a definição da estrutura Viagem
+#include "viagem.h"
 
-// Pré-declaração dos widgets que vamos usar, em vez da classe Ui
+// Pré-declaração dos widgets
 class QLineEdit;
 class QDateEdit;
 class QTextEdit;
-class QDialogButtonBox;
+class QPushButton;
+class QLabel;
 
 class NovaViagemDialog : public QDialog
 {
@@ -16,16 +17,23 @@ class NovaViagemDialog : public QDialog
 
 public:
     explicit NovaViagemDialog(QWidget *parent = nullptr);
-
-    // A função para obter os dados continua a mesma
     Viagem getViagem() const;
 
+private slots:
+    // Slot para o nosso novo botão
+    void onSelecionarImagemClicked();
+
 private:
-    // Em vez de um ponteiro 'ui', teremos ponteiros para cada widget individual
+    // Ponteiros para os widgets
     QLineEdit *m_nomeLineEdit;
     QLineEdit *m_destinoLineEdit;
     QDateEdit *m_dataDateEdit;
     QTextEdit *m_descricaoTextEdit;
+
+    // Novos widgets para a imagem
+    QPushButton *m_selecionarImagemButton;
+    QLabel *m_caminhoImagemLabel;
+    QString m_caminhoImagem; // Variável para guardar o caminho escolhido
 };
 
 #endif // NOVAVIAGEMDIALOG_H

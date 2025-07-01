@@ -20,15 +20,11 @@ public:
     ~windowviagem();
 
 private slots:
-    // Slot atualizado para a seleção de itens na tabela
     void on_tabelaViagensWidget_itemSelectionChanged();
     void on_criarViagemButton_clicked();
 
 private:
-    // Função de ajuda para adicionar uma viagem à nova tabela
     void adicionarViagemNaTabela(const Viagem& viagem);
-
-    // Funções de salvar/carregar
     void carregarViagensDeArquivo();
     void salvarViagensParaArquivo();
 

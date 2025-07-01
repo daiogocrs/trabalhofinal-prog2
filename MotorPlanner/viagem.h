@@ -9,6 +9,7 @@ struct Viagem {
     QString destino;
     QString data;
     QString descricao;
+    QString caminhoImagem; // NOVO CAMPO
 };
 
 #endif // VIAGEM_H
