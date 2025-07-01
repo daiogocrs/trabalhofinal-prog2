@@ -4,7 +4,6 @@
 #include <QDialog>
 #include "viagem.h"
 
-// Pré-declaração dos widgets
 class QLineEdit;
 class QDateEdit;
 class QTextEdit;
@@ -19,21 +18,20 @@ public:
     explicit NovaViagemDialog(QWidget *parent = nullptr);
     Viagem getViagem() const;
 
+    // NOVA FUNÇÃO para preencher o diálogo para edição
+    void setViagem(const Viagem& viagem);
+
 private slots:
-    // Slot para o nosso novo botão
     void onSelecionarImagemClicked();
 
 private:
-    // Ponteiros para os widgets
     QLineEdit *m_nomeLineEdit;
     QLineEdit *m_destinoLineEdit;
     QDateEdit *m_dataDateEdit;
     QTextEdit *m_descricaoTextEdit;
-
-    // Novos widgets para a imagem
     QPushButton *m_selecionarImagemButton;
     QLabel *m_caminhoImagemLabel;
-    QString m_caminhoImagem; // Variável para guardar o caminho escolhido
+    QString m_caminhoImagem;
 };
 
 #endif // NOVAVIAGEMDIALOG_H

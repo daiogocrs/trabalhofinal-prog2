@@ -22,9 +22,14 @@ public:
 private slots:
     void on_tabelaViagensWidget_itemSelectionChanged();
     void on_criarViagemButton_clicked();
+    // NOVOS SLOTS para os botões
+    void on_editarViagemButton_clicked();
+    void on_excluirViagemButton_clicked();
 
 private:
     void adicionarViagemNaTabela(const Viagem& viagem);
+    // NOVA FUNÇÃO para atualizar uma linha da tabela
+    void atualizarViagemNaTabela(int linha, const Viagem& viagem);
     void carregarViagensDeArquivo();
     void salvarViagensParaArquivo();
 
