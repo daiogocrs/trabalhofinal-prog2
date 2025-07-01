@@ -60,16 +60,16 @@
     <property name="title">
      <string>Viagens</string>
     </property>
-    <addaction name="actionNova_Viagem"/>
+   </widget>
+   <widget class="QMenu" name="menuSobre">
+    <property name="title">
+     <string>Sobre</string>
+    </property>
    </widget>
    <addaction name="menuViagens"/>
+   <addaction name="menuSobre"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionNova_Viagem">
-   <property name="text">
-    <string>Nova Viagem</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

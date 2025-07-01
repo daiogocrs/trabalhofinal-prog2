@@ -3,15 +3,14 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
-#include "viagem.h" // Inclui a nova definição da Viagem
+#include <QList>      // Incluir para usar QList
+#include "viagem.h"   // Inclui a definição da estrutura Viagem
 
-// Declaração adiantada para evitar o include circular
+// Declaração adiantada da classe do diálogo para evitar inclusão circular
 class NovaViagemDialog;
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class windowviagem;
-}
+namespace Ui { class windowviagem; }
 QT_END_NAMESPACE
 
 class windowviagem : public QMainWindow
@@ -31,7 +30,7 @@ private:
     void salvarViagensParaArquivo();
 
     Ui::windowviagem *ui;
-    QList<Viagem> m_viagens;
-    NovaViagemDialog *m_novaViagemDialog; // O ponteiro funciona com a declaração adiantada
+    QList<Viagem> m_viagens;          // Lista para guardar os dados das viagens
+    NovaViagemDialog *m_novaViagemDialog; // Ponteiro para a janela de diálogo
 };
 #endif // WINDOWVIAGEM_H
