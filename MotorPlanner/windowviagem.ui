@@ -133,28 +133,6 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>821</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuViagens">
-    <property name="title">
-     <string>Viagens</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuSobre">
-    <property name="title">
-     <string>Sobre</string>
-    </property>
-   </widget>
-   <addaction name="menuViagens"/>
-   <addaction name="menuSobre"/>
-  </widget>
  </widget>
  <resources/>
  <connections/>

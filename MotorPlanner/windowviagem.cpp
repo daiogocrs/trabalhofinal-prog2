@@ -13,6 +13,8 @@
 #include <QVBoxLayout>
 #include <QSplitter>
 #include <QWidget>
+#include <QTabWidget> // Adicionado para a aba
+#include <QLabel>      // Adicionado para o texto da aba "Sobre"
 
 windowviagem::windowviagem(QWidget *parent)
     : QMainWindow(parent)
@@ -20,7 +22,14 @@ windowviagem::windowviagem(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // --- CRIAÇÃO DO LAYOUT ---
+    // --- 1. CRIAÇÃO DO WIDGET DE ABAS ---
+    QTabWidget *tabWidget = new QTabWidget(this);
+
+    // --- 2. CRIAÇÃO DA ABA "VIAGENS" ---
+    QWidget *viagensTab = new QWidget();
+    QVBoxLayout *layoutPrincipalViagens = new QVBoxLayout(viagensTab);
+
+    // Layout com a tabela e os detalhes (painel esquerdo e direito)
     QSplitter *splitter = new QSplitter(Qt::Horizontal, this);
     splitter->addWidget(ui->tabelaViagensWidget);
     QWidget *painelDireito = new QWidget();
@@ -31,18 +40,42 @@ windowviagem::windowviagem(QWidget *parent)
     splitter->addWidget(painelDireito);
     splitter->setSizes({400, 550});
 
+    // Layout para os botões
     QHBoxLayout* botoesLayout = new QHBoxLayout();
     botoesLayout->addWidget(ui->criarViagemButton);
     botoesLayout->addWidget(ui->editarViagemButton);
     botoesLayout->addWidget(ui->excluirViagemButton);
     botoesLayout->addStretch();
 
-    QVBoxLayout *layoutPrincipal = new QVBoxLayout();
-    layoutPrincipal->addWidget(splitter);
-    layoutPrincipal->addLayout(botoesLayout);
-    ui->centralwidget->setLayout(layoutPrincipal);
+    // Adiciona o splitter e os botões ao layout da aba "Viagens"
+    layoutPrincipalViagens->addWidget(splitter);
+    layoutPrincipalViagens->addLayout(botoesLayout);
+    viagensTab->setLayout(layoutPrincipalViagens);
 
-    // --- ESTILIZAÇÃO ---
+    // --- 3. CRIAÇÃO DA ABA "SOBRE" ---
+    QWidget *sobreTab = new QWidget();
+    QVBoxLayout *sobreLayout = new QVBoxLayout(sobreTab);
+    QLabel *sobreLabel = new QLabel(this);
+    sobreLabel->setText(
+        "<h2>MotorPlanner 1.0</h2>"
+        "<p>Este aplicativo foi desenvolvido por <b>daiogocrs</b>.</p>" //
+        "<p>Trabalho final da disciplina de Linguagem de Programação 2.</p>" //
+        "<p><b>Ano:</b> 2025</p>"
+        "<p>O MotorPlanner ajuda você a organizar e visualizar suas viagens de forma simples e eficiente.</p>"
+        );
+    sobreLabel->setAlignment(Qt::AlignCenter);
+    sobreLabel->setWordWrap(true);
+    sobreLayout->addWidget(sobreLabel);
+    sobreTab->setLayout(sobreLayout);
+
+    // --- 4. ADICIONA AS ABAS AO WIDGET DE ABAS ---
+    tabWidget->addTab(viagensTab, "Viagens");
+    tabWidget->addTab(sobreTab, "Sobre");
+
+    // --- 5. DEFINE O WIDGET DE ABAS COMO O WIDGET CENTRAL ---
+    setCentralWidget(tabWidget);
+
+    // --- ESTILIZAÇÃO (continua igual) ---
     ui->tabelaViagensWidget->horizontalHeader()->setStretchLastSection(true);
     ui->tabelaViagensWidget->setAlternatingRowColors(true);
     ui->tabelaViagensWidget->setStyleSheet(R"(
@@ -56,13 +89,10 @@ windowviagem::windowviagem(QWidget *parent)
         QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0px; }
     )");
 
-    // --- CONEXÕES DE SINAIS ---
-    // Apenas a conexão da tabela é necessária aqui, pois ela não segue a convenção de nome.
-    // As conexões dos botões foram REMOVIDAS para evitar a duplicação.
+    // --- CONEXÕES DE SINAIS (continua igual) ---
     connect(ui->tabelaViagensWidget, &QTableWidget::itemSelectionChanged, this, &windowviagem::on_tabelaViagensWidget_itemSelectionChanged);
 
     carregarViagensDeArquivo();
-    // Força a chamada inicial para garantir que os botões comecem desativados
     on_tabelaViagensWidget_itemSelectionChanged();
 }
 
