@@ -26,6 +26,14 @@ private slots:
     void on_editarViagemButton_clicked();
     void on_excluirViagemButton_clicked();
 
+    void on_actionMinhas_Viagens_triggered();
+
+    void on_actionVers_o_triggered();
+
+    void on_actionDesenvolvedor_triggered();
+
+    void on_actionCriar_Viagem_triggered();
+
 private:
     void adicionarViagemNaTabela(const Viagem& viagem);
     // NOVA FUNÇÃO para atualizar uma linha da tabela
